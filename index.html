@@ -1,0 +1,132 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Happy Birthday 🎂</title>
+  <style>
+    body {
+      margin: 0;
+      height: 100vh;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      background: linear-gradient(135deg, #fbc2eb, #a6c1ee);
+      font-family: 'Poppins', Arial, sans-serif;
+      overflow: hidden;
+    }
+
+    .card {
+      background: white;
+      padding: 30px 35px;
+      border-radius: 26px;
+      text-align: center;
+      box-shadow: 0 15px 30px rgba(0,0,0,0.2);
+      animation: pop 0.8s ease;
+      max-width: 340px;
+      position: relative;
+      z-index: 2;
+    }
+
+    h1 {
+      color: #ff6f91;
+      margin-bottom: 10px;
+    }
+
+    .intro {
+      font-size: 18px;
+      color: #555;
+    }
+
+    button {
+      margin-top: 20px;
+      padding: 12px 24px;
+      border: none;
+      border-radius: 30px;
+      background: #ff6f91;
+      color: white;
+      font-size: 16px;
+      cursor: pointer;
+      transition: transform 0.2s ease, background 0.2s ease;
+    }
+
+    button:hover {
+      background: #ff4f78;
+      transform: scale(1.05);
+    }
+
+    .hidden {
+      display: none;
+      margin-top: 18px;
+      animation: fadeIn 0.7s ease;
+    }
+
+    .wish {
+      font-size: 17px;
+      color: #444;
+      line-height: 1.6;
+    }
+
+    .emoji {
+      position: absolute;
+      font-size: 24px;
+      animation: floatUp 2.5s ease forwards;
+      pointer-events: none;
+    }
+
+    @keyframes pop {
+      from { transform: scale(0.7); opacity: 0; }
+      to { transform: scale(1); opacity: 1; }
+    }
+
+    @keyframes fadeIn {
+      from { opacity: 0; transform: translateY(10px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+
+    @keyframes floatUp {
+      from { transform: translateY(0); opacity: 1; }
+      to { transform: translateY(-120px); opacity: 0; }
+    }
+  </style>
+</head>
+<body>
+  <div class="card">
+    <h1>🎉 Happy Birthday nèee 🎉</h1>
+    <p class="intro">Hôm nay là ngày đặc biệt của một người<br>vừa nhây 😆 vừa dễ thương 🥺</p>
+
+    <button onclick="openWish()">🎁 Mở thiệp coi thử 🎁</button>
+
+    <div id="wish" class="hidden">
+      <p class="wish">
+        🎂 Gửi Bảo Ngọc ! 🎂<br>
+        😆 Chúc bà tuổi 18 lúc nào cũng vui vẻ và tràn đầy nhiệt huyết nhé<br><br>
+        📚 Chúc bà tuổi mới học chăm hơn, đạt được nguyện vọng đại học bà mơ ước, gặp được nhiều bạn mới hơn đặc biệt là "bạn đó" nhaa<br><br>
+        Đây là món quà sinh nhật cuối tui tặng bà trong suốt năm cấp 3, mong bà sẽ nhận<br><br>
+        ✨VChúc Bảo Ngọc sang năm sẽ gặp được "bạn" hợp tính hơn, dễ nói chuyện hơn nhen<br><br>
+        🧁 Sinh nhật vui vẻ nhaaaa 💖🎉
+      </p>
+    </div>
+  </div>
+
+  <audio id="sound" src="https://cdn.pixabay.com/download/audio/2022/03/15/audio_0f6c7f3f6e.mp3"></audio>
+
+  <script>
+    function openWish() {
+      document.getElementById('wish').style.display = 'block';
+      document.getElementById('sound').play();
+
+      const emojis = ['🎉','🎂','💖','✨','🧁','😆'];
+      for (let i = 0; i < 12; i++) {
+        const e = document.createElement('div');
+        e.className = 'emoji';
+        e.innerText = emojis[Math.floor(Math.random() * emojis.length)];
+        e.style.left = Math.random() * window.innerWidth + 'px';
+        e.style.bottom = '0px';
+        document.body.appendChild(e);
+        setTimeout(() => e.remove(), 2500);
+      }
+    }
+  </script>
+</body>
+</html>
